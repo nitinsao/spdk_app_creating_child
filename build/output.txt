@@ -1,0 +1,66 @@
+[mySPDKApp] Running in PARENT mode (PID 106723)
+[mySPDKLib] Probe: found controller at 0000:00:0e.0 — attaching
+[mySPDKLib] Attached controller: BDF=0000:00:0e.0
+[mySPDKLib] init() complete — 1 controller(s) found
+
+════════════════════════════════════════════════════
+  NVMe Controllers found: 1
+════════════════════════════════════════════════════
+
+[Controller 0]
+  BDF (PCIe address) : 0000:00:0e.0
+  Model Number       : ORCL-VBOX-NVME-VER12
+  Serial Number      : VB1234-56789
+  Firmware Revision  : 1.0
+  PCI Vendor ID      : 0x80ee
+  Controller ID      : 0x0000
+  Max Namespaces     : 1
+
+════════════════════════════════════════════════════
+  Namespace 1 on Controller 0
+════════════════════════════════════════════════════
+  Namespace Size     : 52428800 sectors
+  Namespace Capacity : 52428800 sectors
+  Namespace Util.    : 52428800 sectors
+  Sector Size        : 512 bytes
+  Total Size         : 25.00 GiB
+
+════════════════════════════════════════════════════
+  [Parent] Forking child process
+════════════════════════════════════════════════════
+
+[mySPDKApp] Running in CHILD mode (PID 106725)
+[mySPDKLib] Probe: found controller at 0000:00:0e.0 — attaching
+[mySPDKLib] Attached controller: BDF=0000:00:0e.0
+[mySPDKLib] init() complete — 1 controller(s) found
+
+════════════════════════════════════════════════════
+  [Child] executeChild() — PID 106725
+════════════════════════════════════════════════════
+  [Child] Sector size: 512 bytes
+
+  [Child] Write: "HelloWorld123456789" → SLBA 0
+  [Child] Write successful
+
+  [Child] Read: 25 bytes from SLBA 0
+  Hex  : 48 65 6c 6c 6f 57 6f 72 6c 64 31 32 33 34 35 36 37 38 39 00 00 00 00 00 00 
+  ASCII: 'HelloWorld123456789......'
+[mySPDKLib] deinit() complete
+[mySPDKApp] Child exiting normally
+[mySPDKLib] deinit() complete
+[Parent] Waiting for child PID 106725 to complete …
+[Parent] Child exited with status 0
+
+[Parent] Re-initialising SPDK after child exit …
+[mySPDKLib] Probe: found controller at 0000:00:0e.0 — attaching
+[mySPDKLib] Attached controller: BDF=0000:00:0e.0
+[mySPDKLib] reinit() complete — 1 controller(s) found
+
+════════════════════════════════════════════════════
+  [Parent] Read: first 20 bytes from SLBA 0
+════════════════════════════════════════════════════
+  Hex  : 48 65 6c 6c 6f 57 6f 72 6c 64 31 32 33 34 35 36 37 38 39 00 
+  ASCII: HelloWorld123456789.
+[mySPDKLib] deinit() complete
+
+[mySPDKApp] Parent exiting normally
